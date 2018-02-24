@@ -18,19 +18,16 @@ public class ReflectClassDemo {
         LOGGER.info("获取Class方式01：类的public属性class");
         Class clazz1 = User.class;
         LOGGER.info(clazz1);
-        LOGGER.info(clazz1.toString());
 
         System.out.println();
         LOGGER.info("获取Class方式02：类的public方法getClass()");
         User user = new User();
         Class clazz2 = user.getClass();
         LOGGER.info(clazz2);
-        LOGGER.info(clazz2.toString());
 
         System.out.println();
         LOGGER.info("获取Class方法03：Class.forName（需要抛出异常）");
         Class clazz3 = Class.forName("pers.hanchao.reflect.common.User");
         LOGGER.info(clazz3);
-        LOGGER.info(clazz3.toString());
     }
 }
