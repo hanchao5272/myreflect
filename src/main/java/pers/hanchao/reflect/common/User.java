@@ -4,8 +4,16 @@ package pers.hanchao.reflect.common;
 * @author hanchao 2018/2/14 22:30
 */
 public class User {
-    private String username;
-    private String password;
+    private String username = "张三";
+    private String password = "123456";
+
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     @Override
     public String toString() {
