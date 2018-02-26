@@ -4,13 +4,15 @@ package pers.hanchao.reflect.common;
 * @author hanchao 2018/2/14 22:30
 */
 public class User {
-    private String username = "张三";
-    private String password = "123456";
+    @MyAnnotationA
+    @MyAnnotationB
+    public String username = "张三";
+    public int password = 123456;
 
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, int password) {
         this.username = username;
         this.password = password;
     }
@@ -21,6 +23,7 @@ public class User {
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+
     }
 
     public String getUsername() {
@@ -31,11 +34,11 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
+    public int getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(int password) {
         this.password = password;
     }
 }
