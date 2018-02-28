@@ -1,8 +1,10 @@
 package pers.hanchao.reflect.common;
+
 /**
-* <p>用户表</p>
-* @author hanchao 2018/2/14 22:30
-*/
+ * <p>用户表</p>
+ *
+ * @author hanchao 2018/2/14 22:30
+ */
 public class User {
     @MyAnnotationA
     @MyAnnotationB
@@ -26,8 +28,45 @@ public class User {
 
     }
 
-    public String getUsername() {
+    /**
+     * <p>Title: 为了测试可变参数</p>
+     *
+     * @author 韩超 2018/2/28 17:32
+     */
+    public void demo(String... args) {
+
+    }
+
+    /**
+     * <p>Title: 泛型方法：为了测试method.getTypeParameters()参数化类型</p>
+     *
+     * @author 韩超 2018/2/28 17:30
+     */
+    public static <T> void test(T t) {
+    }
+
+    /**
+     * <p>Title: 为了测试注解、异常</p>
+     *
+     * @author 韩超 2018/2/28 17:31
+     */
+    @MyAnnotationA
+    @MyAnnotationB
+    public String getUsername() throws NullPointerException, ArrayStoreException {
         return username;
+    }
+
+    /**
+     * <p>Title: method.getParameterAnnotations()示例</p>
+     *
+     * @author 韩超 2018/2/28 16:55
+     */
+    public static void main(String[] args) {
+
+    }
+
+    public void initUser(@MyAnnotationA @MyAnnotationB String username, @MyAnnotationB String password) {
+
     }
 
     public void setUsername(String username) {
