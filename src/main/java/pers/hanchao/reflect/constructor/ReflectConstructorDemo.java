@@ -89,7 +89,7 @@ public class ReflectConstructorDemo {
             LOGGER.info("通过constructor.getGenericParameterTypes()获取参数类型数组（Type）:" + paramType);
         }
         System.out.println("");
-        //通过constructor.getParameters()获取构造器的参数数组
+        //通过constructor.getParameters()获取构造器的参数(Parameter)数组
         Parameter[] parameters = paramConstructor.getParameters();
         for (Parameter parameter : parameters){
             LOGGER.info("通过constructor.getParameters()获取构造器的参数数组:" + parameter);

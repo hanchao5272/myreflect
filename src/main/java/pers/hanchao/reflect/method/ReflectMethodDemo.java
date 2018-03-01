@@ -65,6 +65,12 @@ public class ReflectMethodDemo {
         for (Class clazz : paramClasses) {
             LOGGER.info("通过method.getParameterTypes()获取参数的类(Class):" + clazz);
         }
+        System.out.println("");
+        //通过method.getParameters()获取参数（Parameter）数组
+        Parameter[] parameters = setUsrMethod.getParameters();
+        for (Parameter parameter : parameters){
+            LOGGER.info("通过method.getParameters()获取参数（Parameter）数组:" + parameter);
+        }
         System.out.println();
         //通过method.getGenericExceptionTypes()获取异常的类型(Type)
         Type[] exceptionTypes = getUsrMethod.getGenericExceptionTypes();
@@ -88,9 +94,9 @@ public class ReflectMethodDemo {
         LOGGER.info("通过method.isBridge()判断是否是桥方法：" + getUsrMethod.isBridge());
         //通过method.isSynthetic()判断是否是合成方法
         LOGGER.info("通过method.isSynthetic()判断是否是合成方法：" + getUsrMethod.isSynthetic());
-        //通过method.isDefault()判断是否使用了可变参数：
+        //通过method.isVarArgs()判断是否使用了可变参数：
         Method demoMethod = userClass.getDeclaredMethod("demo", String[].class);
-        LOGGER.info("通过method.isDefault()判断是否使用了可变参数：" + demoMethod.isDefault() + "\n");
+        LOGGER.info("通过method.isVarArgs()判断是否使用了可变参数：" + demoMethod.isVarArgs() + "\n");
 
         //通过method.getParameterCount()获取参数个数
         LOGGER.info("通过method.getParameterCount()获取参数个数，setUsername = " + setUsrMethod.getParameterCount());
