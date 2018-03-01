@@ -66,7 +66,6 @@ public class ReflectMethodDemo {
             LOGGER.info("通过method.getParameterTypes()获取参数的类(Class):" + clazz);
         }
         System.out.println();
-
         //通过method.getGenericExceptionTypes()获取异常的类型(Type)
         Type[] exceptionTypes = getUsrMethod.getGenericExceptionTypes();
         for (Type exception : exceptionTypes) {

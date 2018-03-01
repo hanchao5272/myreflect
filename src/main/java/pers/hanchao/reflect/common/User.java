@@ -14,7 +14,9 @@ public class User {
     public User() {
     }
 
-    public User(String username, int password) {
+    @MyAnnotationA
+    @MyAnnotationB
+    public User(@MyAnnotationA @MyAnnotationB String username,@MyAnnotationA int password) throws NullPointerException, ArrayStoreException {
         this.username = username;
         this.password = password;
     }
