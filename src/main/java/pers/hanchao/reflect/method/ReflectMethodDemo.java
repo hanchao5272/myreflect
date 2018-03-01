@@ -68,7 +68,7 @@ public class ReflectMethodDemo {
         System.out.println("");
         //通过method.getParameters()获取参数（Parameter）数组
         Parameter[] parameters = setUsrMethod.getParameters();
-        for (Parameter parameter : parameters){
+        for (Parameter parameter : parameters) {
             LOGGER.info("通过method.getParameters()获取参数（Parameter）数组:" + parameter);
         }
         System.out.println();

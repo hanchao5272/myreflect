@@ -5,15 +5,20 @@ import pers.hanchao.reflect.common.User;
 
 /**
  * <p>Title: Java获取Class对象的三种方式</p>
+ *
  * @author 韩超 2018/2/24 13:56
  */
 public class ReflectClassDemo {
-    /** log4j */
-    private static final Logger LOGGER = Logger.getLogger(ReflectClassDemo.class);
     /**
-    * <p>获取Class对象的三种方式</p>
-    * @author hanchao
-    */
+     * log4j
+     */
+    private static final Logger LOGGER = Logger.getLogger(ReflectClassDemo.class);
+
+    /**
+     * <p>获取Class对象的三种方式</p>
+     *
+     * @author hanchao
+     */
     public static void main(String[] args) throws ClassNotFoundException {
         LOGGER.info("获取Class对象方式01：类的public属性class");
         Class clazz1 = User.class;

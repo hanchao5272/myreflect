@@ -1,6 +1,5 @@
 package pers.hanchao.reflect.constructor;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.log4j.Logger;
 import pers.hanchao.reflect.common.MyAnnotationA;
 import pers.hanchao.reflect.common.MyAnnotationB;
@@ -8,8 +7,6 @@ import pers.hanchao.reflect.common.User;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * java.lang.reflect.Constructor示例
@@ -18,7 +15,7 @@ import java.util.List;
 public class ReflectConstructorDemo {
     private final static Logger LOGGER = Logger.getLogger(ReflectConstructorDemo.class);
 
-    static class Demo<T>{
+    static class Demo<T> {
         private T t;
 
         public Demo(T t) {
@@ -28,6 +25,7 @@ public class ReflectConstructorDemo {
 
     /**
      * <p>Title: java反射-构造器Constructor示例</p>
+     *
      * @author 韩超 2018/3/1 11:48
      */
     public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
@@ -42,18 +40,18 @@ public class ReflectConstructorDemo {
         LOGGER.info("通过class.getDeclaredConstructor获取默认构造函数()获取默认构造函数:" + defaultConstructor1 + "\n");
 
         //通过class.getConstructor(args...)和class.getDeclaredConstructor(args...)获取带参数的构造器
-        Constructor paramConstructor = userClass.getConstructor(String.class,int.class);
-        Constructor paramConstructor1 = userClass.getDeclaredConstructor(String.class,int.class);
+        Constructor paramConstructor = userClass.getConstructor(String.class, int.class);
+        Constructor paramConstructor1 = userClass.getDeclaredConstructor(String.class, int.class);
         LOGGER.info("通过class.getConstructor(args...)获取带参数的构造器:" + paramConstructor);
         LOGGER.info("通过class.getDeclaredConstructor(args...)获取带参数的构造器:" + paramConstructor1 + "\n");
 
         //通过class.getConstructors()和class.getDeclaredConstructors获取所有构造器
         Constructor[] constructors = userClass.getConstructors();
         Constructor[] constructors1 = userClass.getDeclaredConstructors();
-        for (Constructor constructor : constructors){
+        for (Constructor constructor : constructors) {
             LOGGER.info("通过class.getConstructors()获取所有构造器:" + constructor);
         }
-        for (Constructor constructor : constructors1){
+        for (Constructor constructor : constructors1) {
             LOGGER.info("通过class.getDeclaredConstructors()获取所有构造器:" + constructor);
         }
         System.out.println("");
@@ -80,18 +78,18 @@ public class ReflectConstructorDemo {
         LOGGER.info("通过constructor.getParameterCount()获取参数个数-paramConstructor:" + paramConstructor.getParameterCount() + "\n");
         //通过constructor.getParameterTypes()获取参数类数组（Class）
         Class[] paramClasses = paramConstructor.getParameterTypes();
-        for(Class paramClass : paramClasses){
+        for (Class paramClass : paramClasses) {
             LOGGER.info("通过constructor.getParameterTypes()获取参数类数组（Class）:" + paramClass);
         }
         //通过constructor.getParameterTypes()获取参数类型数组（Type）
         Type[] paramTypes = paramConstructor.getGenericParameterTypes();
-        for(Type paramType : paramTypes){
+        for (Type paramType : paramTypes) {
             LOGGER.info("通过constructor.getGenericParameterTypes()获取参数类型数组（Type）:" + paramType);
         }
         System.out.println("");
         //通过constructor.getParameters()获取构造器的参数(Parameter)数组
         Parameter[] parameters = paramConstructor.getParameters();
-        for (Parameter parameter : parameters){
+        for (Parameter parameter : parameters) {
             LOGGER.info("通过constructor.getParameters()获取构造器的参数数组:" + parameter);
         }
         System.out.println("");
@@ -101,12 +99,12 @@ public class ReflectConstructorDemo {
 
         //通过constructor.getExceptionTypes()获取异常类（Class）
         Class[] exceptionClasses = paramConstructor.getExceptionTypes();
-        for (Class exceptionClass : exceptionClasses){
+        for (Class exceptionClass : exceptionClasses) {
             LOGGER.info("通过const.getExceptionTypes()获取异常类（Class）:" + exceptionClass);
         }
         //通过constructor.getGenericExceptionTypes()获取异常类（Type）
         Class[] exceptionTypes = (Class[]) paramConstructor.getGenericExceptionTypes();
-        for (Class exceptionType : exceptionTypes){
+        for (Class exceptionType : exceptionTypes) {
             LOGGER.info("通过const.getGenericExceptionTypes()获取异常类（Type）:" + exceptionType);
         }
         System.out.println("");
@@ -124,7 +122,7 @@ public class ReflectConstructorDemo {
         LOGGER.info("========================================= Constructor注解信息 =============================");
         //通过constructor.getAnnotatedParameterTypes()获取注解的参数类型（组合类型）
         AnnotatedType[] annotatedTypes = paramConstructor.getAnnotatedParameterTypes();
-        for (AnnotatedType annotatedType : annotatedTypes){
+        for (AnnotatedType annotatedType : annotatedTypes) {
             LOGGER.info("通过constructor.getAnnotatedParameterTypes()获取注解的参数类型（组合类型）- 参数类型:" + annotatedType.getType());
         }
         System.out.println("");
@@ -135,33 +133,33 @@ public class ReflectConstructorDemo {
 
         //通过constructor.getAnnotationsByType(annotation.cass)和constructor.getDeclaredAnnotationsByType(annotation.cass)获取指定的一类注解Class
         Annotation[] oneTypeAnnotations = paramConstructor.getAnnotationsByType(MyAnnotationB.class);
-        for (Annotation annotation : oneTypeAnnotations){
+        for (Annotation annotation : oneTypeAnnotations) {
             LOGGER.info("通过constructor.getAnnotationsByType(annotation.cass)获取指定的一类注解Class：" + annotation);
         }
         Annotation[] oneTypeAnnotations1 = paramConstructor.getDeclaredAnnotationsByType(MyAnnotationB.class);
-        for (Annotation annotation : oneTypeAnnotations1){
+        for (Annotation annotation : oneTypeAnnotations1) {
             LOGGER.info("通过constructor.getDeclaredAnnotationsByType(annotation.cass)获取指定的一类注解Class：" + annotation);
         }
         System.out.println("");
 
         //通过constructor.getAnnotations()和constructor.getDeclaredAnnotations()获取全部注解类
         Annotation[] annotations = paramConstructor.getAnnotations();
-        for (Annotation annotation : annotations){
+        for (Annotation annotation : annotations) {
             LOGGER.info("通过constructor.getAnnotations()获取全部的注解类：" + annotation);
         }
         Annotation[] annotations1 = paramConstructor.getDeclaredAnnotations();
-        for (Annotation annotation : annotations1){
+        for (Annotation annotation : annotations1) {
             LOGGER.info("通过constructor.getDeclaredAnnotations()获取全部的注解类：" + annotation);
         }
         System.out.println("");
 
         //通过constructor.getParameterAnnotations获取参数和注解的二维矩阵
         Annotation[][] parameterAnnotations = paramConstructor.getParameterAnnotations();
-        for(int i = 0; i < parameterAnnotations.length; i++) {
+        for (int i = 0; i < parameterAnnotations.length; i++) {
             //第一个维度标识的是第i个参数的所有注解
-            for(int j = 0; j < parameterAnnotations[i].length; j++) {
+            for (int j = 0; j < parameterAnnotations[i].length; j++) {
                 //第二个维度标识的是第i个参数的第j个注解
-                LOGGER.info("第" + (i + 1) + "个参数的第" + (j+1) + "个注解：" + parameterAnnotations[i][j]);
+                LOGGER.info("第" + (i + 1) + "个参数的第" + (j + 1) + "个注解：" + parameterAnnotations[i][j]);
             }
         }
         System.out.println("");
@@ -176,7 +174,7 @@ public class ReflectConstructorDemo {
         User user1 = (User) defaultConstructor.newInstance();
         LOGGER.info("通过constructor.newInstance()以默认构造器进行对象实例化" + user1.toString());
         //通过constructor.newInstance(args...)以指定构造器进行对象实例化
-        User user2 = (User) paramConstructor.newInstance("王文武",19191);
+        User user2 = (User) paramConstructor.newInstance("王文武", 19191);
         LOGGER.info("通过constructor.newInstance(args...)以指定构造器进行对象实例化:" + user2.toString());
     }
 }

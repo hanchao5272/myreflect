@@ -1,12 +1,14 @@
 package pers.hanchao.reflect.paramters;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.log4j.Logger;
 import pers.hanchao.reflect.common.MyAnnotationB;
 import pers.hanchao.reflect.common.User;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.*;
+import java.lang.reflect.AnnotatedType;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
 
 /**
  * Created by 韩超 on 2018/3/1.
@@ -14,11 +16,9 @@ import java.lang.reflect.*;
 public class ReflectParameterDemo {
     private final static Logger LOGGER = Logger.getLogger(ReflectParameterDemo.class);
 
-    void test(User user){
-
-    }
     /**
      * <p>Title: java反射-参数Parameter</p>
+     *
      * @author 韩超 2018/3/1 15:56
      */
     public static void main(String[] args) throws NoSuchMethodException {
@@ -38,7 +38,8 @@ public class ReflectParameterDemo {
         LOGGER.info("通过parameter.getParameterizedType()获取参数化类型：" + parameter.getParameterizedType());
         LOGGER.info("通过parameter.toString()获取参数的字符串描述：" + parameter.toString());
         LOGGER.info("通过parameter.isSynthetic()判断参数是否是合成的：" + parameter.isSynthetic());
-        LOGGER.info("通过parameter.isImplicit()判断参数是否是隐式的" + parameter.isImplicit());
+        LOGGER.info("通过parameter.isImplicit()判断参数是否是隐式的：" + parameter.isImplicit());
+        LOGGER.info("通过parameter.isNamePresent()判断参数是否以类文件名命名：" + parameter.isNamePresent());
         LOGGER.info("通过parameter.isVarArgs()判断参数是否是可变的：" + parameter.isVarArgs() + "\n");
 
         //===================================== Parameter注解信息 =====================================
@@ -53,12 +54,12 @@ public class ReflectParameterDemo {
 
         //通过parameter.getAnnotationsByType(annotation.class)获取一类注解
         Annotation[] typeAnnotations = parameter.getAnnotationsByType(MyAnnotationB.class);
-        for (Annotation annotation : typeAnnotations){
+        for (Annotation annotation : typeAnnotations) {
             LOGGER.info("通过parameter.getAnnotationsByType(annotation.class)获取一类注解：" + annotation);
         }
         //通过parameter.getDeclaredAnnotationsByType(annotation.class)获取一类注解
         Annotation[] typeAnnotations1 = parameter.getDeclaredAnnotationsByType(MyAnnotationB.class);
-        for (Annotation annotation : typeAnnotations1){
+        for (Annotation annotation : typeAnnotations1) {
             LOGGER.info("通过parameter.getDeclaredAnnotationsByType(annotation.class)获取一类注解：" + annotation);
         }
         System.out.println("");

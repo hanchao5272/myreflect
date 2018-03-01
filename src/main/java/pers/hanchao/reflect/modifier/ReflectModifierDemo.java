@@ -6,6 +6,7 @@ import java.lang.reflect.Modifier;
 
 /**
  * <p>java.lang.reflect.Modifier示例</p>
+ *
  * @author hanchao 2018/2/27 21:19
  **/
 public class ReflectModifierDemo {
@@ -13,6 +14,7 @@ public class ReflectModifierDemo {
 
     /**
      * <p>java反射-修饰符 示例</p>
+     *
      * @author hanchao 2018/2/27 21:19
      **/
     public static void main(String[] args) {

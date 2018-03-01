@@ -14,6 +14,7 @@ public class CreateObjectDemo {
 
     /**
      * <p>Title: 通过反射创建对象的两种方式</p>
+     *
      * @author 韩超 2018/2/24 14:11
      */
     public static void main(String[] args) throws Exception {
@@ -30,8 +31,8 @@ public class CreateObjectDemo {
         Constructor constructor = userClass.getDeclaredConstructor();
         User user2 = (User) constructor.newInstance();
         LOGGER.info("通过反射实例化对象02-Constructor.newInstance()（需要强制类型转换[无参构造]）：" + user2.toString());
-        Constructor constructor1 = userClass.getDeclaredConstructor(String.class,String.class);
-        User user3 = (User) constructor1.newInstance("李四","000000");
+        Constructor constructor1 = userClass.getDeclaredConstructor(String.class, String.class);
+        User user3 = (User) constructor1.newInstance("李四", "000000");
         LOGGER.info("通过反射实例化对象02-Constructor.newInstance()（需要强制类型转换[有参构造]）：" + user3.toString());
     }
 }

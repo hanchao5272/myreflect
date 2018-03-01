@@ -10,16 +10,21 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 
 /**
-* <p>java.lang.reflect.Field学习示例</p>
-* @author hanchao 2018/2/26 21:23
-*/
+ * <p>java.lang.reflect.Field学习示例</p>
+ *
+ * @author hanchao 2018/2/26 21:23
+ */
 public class ReflectFieldDemo {
-    /** log4j */
-    private static final Logger LOGGER = Logger.getLogger(ReflectFieldDemo.class);
     /**
-    * <p>Java反射Field示例</p>
-    * @author hanchao 2018/2/26 21:26
-    */
+     * log4j
+     */
+    private static final Logger LOGGER = Logger.getLogger(ReflectFieldDemo.class);
+
+    /**
+     * <p>Java反射Field示例</p>
+     *
+     * @author hanchao 2018/2/26 21:26
+     */
     public static void main(String[] args) throws Exception {
         LOGGER.info("Java反射-Field示例");
         //首先获取Class的对象
@@ -32,13 +37,13 @@ public class ReflectFieldDemo {
         LOGGER.info("通过Class.getDeclaredField对象获取指定的Field对象");
         Field usrFiled = userClass.getDeclaredField("username");
         Field pwdFiled = userClass.getDeclaredField("password");
-        LOGGER.info("username的Field： "+ usrFiled);
-        LOGGER.info("password的Field： "+ pwdFiled + "\n");
+        LOGGER.info("username的Field： " + usrFiled);
+        LOGGER.info("password的Field： " + pwdFiled + "\n");
 
         //通过Class.getFields()获取所有的字段对象
         LOGGER.info("通过Class.getFields()获取所有的字段对象");
         Field[] fields = userClass.getFields();
-        for (Field field : fields){
+        for (Field field : fields) {
             LOGGER.info("User的字段：" + field);
         }
         System.out.println();
@@ -82,7 +87,7 @@ public class ReflectFieldDemo {
         //通过Field.getDeclaredAnnotations() 获取所有的注解
         LOGGER.info("通过Field.getDeclaredAnnotations() 获取所有的注解");
         Annotation[] annotations = usrFiled.getDeclaredAnnotations();
-        for (Annotation annotation1 : annotations){
+        for (Annotation annotation1 : annotations) {
             LOGGER.info("User.username 的注解：" + annotation1);
         }
         System.out.println();
@@ -100,16 +105,16 @@ public class ReflectFieldDemo {
         LOGGER.info("通过Field.get(Object obj)和Field.set 为当前字段设置和获取值[全部类型(基本数据类型自动装箱)]");
         User user = new User();
         LOGGER.info("user对象在username字段的值是：" + usrFiled.get(user).getClass() + usrFiled.get(user));
-        usrFiled.set(user,"张三丰");
+        usrFiled.set(user, "张三丰");
         LOGGER.info("user对象在username字段的值是：" + usrFiled.get(user).getClass() + usrFiled.get(user) + "\n");
 
         LOGGER.info("//////////////////////////////////////////////// Field 获取和设置某个对象的字段值（基本数据类型） //////////////////////////////////////");
         //////////////////////////////////////////////// Field 获取和设置某个对象的字段值（基本数据类型） //////////////////////////////////////
         LOGGER.info("通过Field.getXxxx和Field.setXxxx为当前字段设置和获取基本数据类型的值");
         LOGGER.info("字段类型：" + pwdFiled);
-        User user1 = new User("王五",111111);
+        User user1 = new User("王五", 111111);
         LOGGER.info("user1.password = " + pwdFiled.getInt(user1));
-        pwdFiled.setInt(user1,321);
+        pwdFiled.setInt(user1, 321);
         LOGGER.info("user1.password = " + pwdFiled.getInt(user1));
     }
 }
