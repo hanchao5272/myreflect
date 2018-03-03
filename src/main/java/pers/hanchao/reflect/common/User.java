@@ -5,7 +5,9 @@ package pers.hanchao.reflect.common;
  *
  * @author hanchao 2018/2/14 22:30
  */
-public class User {
+@MyAnnotationA
+@MyAnnotationB
+public class User extends SuperUser implements InterfaceAAA,InterfaceBBB {
     @MyAnnotationA
     @MyAnnotationB
     public String username = "张三";

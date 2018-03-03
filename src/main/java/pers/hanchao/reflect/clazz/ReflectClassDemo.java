@@ -20,18 +20,18 @@ public class ReflectClassDemo {
      * @author hanchao
      */
     public static void main(String[] args) throws ClassNotFoundException {
-        LOGGER.info("获取Class对象方式01：类的public属性class");
+        LOGGER.info("获取Class对象方式01：类的public属性class[在编译器知道类名]");
         Class clazz1 = User.class;
         LOGGER.info(clazz1);
 
         System.out.println();
-        LOGGER.info("获取Class对象方式02：类的public方法getClass()");
+        LOGGER.info("获取Class对象方式02：类的public方法getClass()[在运行期知道类名]");
         User user = new User();
         Class clazz2 = user.getClass();
         LOGGER.info(clazz2);
 
         System.out.println();
-        LOGGER.info("获取Class对象方法03：Class.forName（需要抛出异常）");
+        LOGGER.info("获取Class对象方法03：Class.forName（需要抛出异常[在运行期知道类名]）");
         Class clazz3 = Class.forName("pers.hanchao.reflect.common.User");
         LOGGER.info(clazz3);
     }
