@@ -26,18 +26,20 @@ public class ReflectMethodDemo {
 
         ////////////////////////////////////// Class对象与Method对象的相互转化 /////////////////////////////////////
         LOGGER.info("////////////////////////////////////// Class对象与Method对象的相互转化 /////////////////////////////////////");
-        //通过clazz.getDeclaredMethod(name,args)获取CLass对象的指定方法
-        LOGGER.info("通过clazz.getDeclaredMethod(name,args)获取CLass对象的指定方法");
-        Method getUsrMethod = userClass.getDeclaredMethod("getUsername");
+        //通过clazz.getMethod(name,args...)和clazz.getDeclaredMethod(name,args...)获取CLass对象的指定方法
+        Method getUsrMethod = userClass.getMethod("getUsername");
         Method setUsrMethod = userClass.getDeclaredMethod("setUsername", String.class);
-        LOGGER.info("通过clazz.getDeclaredMethod(name,args)获取CLass对象的指定方法：" + getUsrMethod);
+        LOGGER.info("通过clazz.getMethod(name,args)获取CLass对象的指定方法：" + getUsrMethod);
         LOGGER.info("通过clazz.getDeclaredMethod(name,args)获取CLass对象的指定方法：" + setUsrMethod + "\n");
 
-        //通过clazz.getMethods()获取CLass对象的全部方法
-        LOGGER.info("通过clazz.getMethods()获取CLass对象的全部方法");
+        //通过clazz.getMethods()和clazz.getDeclaredMethods()获取CLass对象的全部方法
         Method[] methods = userClass.getMethods();
         for (Method method : methods) {
             LOGGER.info("通过clazz.getMethods()获取CLass对象的全部方法：" + method);
+        }
+        Method[] methods1 = userClass.getDeclaredMethods();
+        for (Method method : methods1) {
+            LOGGER.info("通过clazz.getDeclaredMethods()获取CLass对象的全部方法：" + method);
         }
         System.out.println();
 
@@ -47,6 +49,9 @@ public class ReflectMethodDemo {
 
         ////////////////////////////////////// Method信息获取 /////////////////////////////////////
         LOGGER.info("////////////////////////////////////// Method信息获取 /////////////////////////////////////");
+        //通过method.getModifiers()获取方法修饰符的int值
+        LOGGER.info("通过method.getModifiers()获取方法修饰符的int值" + Modifier.toString(getUsrMethod.getModifiers()) + "\n");
+
         //通过method.getName()获取方法名
         LOGGER.info("通过method.getName()获取方法名" + getUsrMethod.getName() + "\n");
 
@@ -88,8 +93,8 @@ public class ReflectMethodDemo {
         LOGGER.info("通过method.toString()获取方法的字符串描述:" + getUsrMethod.toString());
         LOGGER.info("通过method.toGenericString()获取方法的字符串描述（包括通用类型）:" + getUsrMethod.toGenericString() + "\n");
 
-        //通过equals()比较两个反复是否相同
-        LOGGER.info("通过equals()比较两个反复是否相同：" + getUsrMethod.equals(setUsrMethod));
+        //通过equals()比较两个方法是否相同
+        LOGGER.info("通过equals()比较两个方法是否相同：" + getUsrMethod.equals(setUsrMethod));
         //通过method.isBridge()判断是否是桥方法
         LOGGER.info("通过method.isBridge()判断是否是桥方法：" + getUsrMethod.isBridge());
         //通过method.isSynthetic()判断是否是合成方法
@@ -103,15 +108,15 @@ public class ReflectMethodDemo {
         LOGGER.info("通过method.getParameterCount()获取参数个数，getUsername = " + getUsrMethod.getParameterCount() + "\n");
 
         //通过method.getDefaultValue()获取默认返回值
-        System.out.println("通过method.getDefaultValue()获取默认返回值,setUsername = " + setUsrMethod.getDefaultValue());
-        System.out.println("通过method.getDefaultValue()获取默认返回值,getUsrMethod = " + getUsrMethod.getDefaultValue() + "\n");
+        LOGGER.info("通过method.getDefaultValue()获取默认返回值,setUsername = " + setUsrMethod.getDefaultValue());
+        LOGGER.info("通过method.getDefaultValue()获取默认返回值,getUsrMethod = " + getUsrMethod.getDefaultValue() + "\n");
 
-        //通过method.getTypeParameters()获取泛型方法的参数化类型
+        //通过method.getTypeParameters()获取泛型方法的参数化类型(泛型)
         TypeVariable[] typeVariables = getUsrMethod.getTypeParameters();
-        LOGGER.info("通过method.getTypeParameters()获取泛型方法的参数化类型,getUsrMethod（）的参数化类型个数：" + typeVariables.length);
+        LOGGER.info("通过method.getTypeParameters()获取泛型方法的参数化类型(泛型),getUsrMethod()的参数化类型个数：" + typeVariables.length);
         Method toArrayMethod = userClass.getDeclaredMethod("test", Object.class);
         TypeVariable[] typeVariables1 = toArrayMethod.getTypeParameters();
-        LOGGER.info("通过method.getTypeParameters()获取泛型方法的参数化类型,ReflectMethodDemo.test()的参数化类型：" + typeVariables1[0].getName() + "\n");
+        LOGGER.info("通过method.getTypeParameters()获取泛型方法的参数化类型(泛型),ReflectMethodDemo.test()的参数化类型：" + typeVariables1[0].getName() + "\n");
 
         ////////////////////////////////////// Method注解信息获取 /////////////////////////////////////
         LOGGER.info("////////////////////////////////////// Method注解信息获取 /////////////////////////////////////");
@@ -155,7 +160,7 @@ public class ReflectMethodDemo {
             LOGGER.info("通过method.getDeclaredAnnotations()获取全部注解： " + annotation44);
         }
         System.out.println("");
-        //获取参数的注解
+        //获取注解参数的方法
         Method initUserMethod = userClass.getDeclaredMethod("initUser", String.class, String.class);
 
         //通过method.getParameterAnnotations()获取方法的所有参数注解（二维矩阵）
@@ -172,11 +177,6 @@ public class ReflectMethodDemo {
         }
         System.out.println("");
 
-        ////////////////////////////////////// Method 获取修饰符信息  /////////////////////////////////////
-        LOGGER.info("////////////////////////////////////// Method 获取修饰符信息  /////////////////////////////////////");
-        //通过method.getModifiers()获取方法修饰符的int值
-        LOGGER.info("通过method.getModifiers()获取方法修饰符的int值" + Modifier.toString(getUsrMethod.getModifiers()) + "\n");
-
         LOGGER.info("////////////////////////////// Method 调用方法 ///////////////////////////////");
         ////////////////////////////// Method 调用方法 ///////////////////////////////
         User user = new User();
@@ -184,6 +184,14 @@ public class ReflectMethodDemo {
         //通过method.invoke(user,args...)调用方法
         LOGGER.info("通过反射方法method.invoke(user,args...)设置 user.username");
         setUsrMethod.invoke(user, "张三丰");
-        LOGGER.info("通过反射方法method.invoke(user,args...)获取 user.username = " + getUsrMethod.invoke(user));
+        LOGGER.info("通过反射方法method.invoke(user,args...)获取 user.username = " + getUsrMethod.invoke(user) + "\n");
+        //可以通过method.setAccessible(true)将私有方法private method设置为可访问的，从而操作私有方法
+        Method privateMethod = userClass.getDeclaredMethod("setUsernameByDefault");
+        LOGGER.info("私有成员变量：" + privateMethod);
+        LOGGER.info("可以通过method.setAccessible(true)将私有方法private method设置为可访问的，从而操作私有方法");
+        privateMethod.setAccessible(true);
+        LOGGER.info("操作私有成员方法" );
+        privateMethod.invoke(user);
+        LOGGER.info("查看私有成员方法调用结果：" + user.toString());
     }
 }
