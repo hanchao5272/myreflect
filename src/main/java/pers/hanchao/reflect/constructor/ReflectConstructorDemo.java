@@ -15,14 +15,6 @@ import java.lang.reflect.*;
 public class ReflectConstructorDemo {
     private final static Logger LOGGER = Logger.getLogger(ReflectConstructorDemo.class);
 
-    static class Demo<T> {
-        private T t;
-
-        public Demo(T t) {
-            this.t = t;
-        }
-    }
-
     /**
      * <p>Title: java反射-构造器Constructor示例</p>
      *
@@ -37,7 +29,7 @@ public class ReflectConstructorDemo {
         Constructor defaultConstructor = userClass.getConstructor();
         Constructor defaultConstructor1 = userClass.getDeclaredConstructor();
         LOGGER.info("通过class.getConstructor()获取默认构造函数:" + defaultConstructor);
-        LOGGER.info("通过class.getDeclaredConstructor获取默认构造函数()获取默认构造函数:" + defaultConstructor1 + "\n");
+        LOGGER.info("通过class.getDeclaredConstructor()获取默认构造函数:" + defaultConstructor1 + "\n");
 
         //通过class.getConstructor(args...)和class.getDeclaredConstructor(args...)获取带参数的构造器
         Constructor paramConstructor = userClass.getConstructor(String.class, int.class);
@@ -81,7 +73,7 @@ public class ReflectConstructorDemo {
         for (Class paramClass : paramClasses) {
             LOGGER.info("通过constructor.getParameterTypes()获取参数类数组（Class）:" + paramClass);
         }
-        //通过constructor.getParameterTypes()获取参数类型数组（Type）
+        //通过constructor.getGenericParameterTypes()获取参数类型数组（Type）
         Type[] paramTypes = paramConstructor.getGenericParameterTypes();
         for (Type paramType : paramTypes) {
             LOGGER.info("通过constructor.getGenericParameterTypes()获取参数类型数组（Type）:" + paramType);

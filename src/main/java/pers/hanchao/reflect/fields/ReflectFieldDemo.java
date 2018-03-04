@@ -53,8 +53,8 @@ public class ReflectFieldDemo {
         }
         System.out.println();
 
-        //通过Field.getDeclaredClass获取定义这个成员变量的的Class对象
-        LOGGER.info("通过Field.getDeclaredClass()获取定义这个成员变量的的Class对象");
+        //通过Field.getDeclaringClass获取定义这个成员变量的的Class对象
+        LOGGER.info("通过Field.getDeclaringClass()获取定义这个成员变量的的Class对象");
         Class usrClass1 = usrFiled.getDeclaringClass();
         LOGGER.info("定义" + usrFiled + "成员变量的类是" + usrClass1 + "\n");
 
