@@ -11,7 +11,7 @@ public class User extends SuperUser implements InterfaceAAA,InterfaceBBB {
     @MyAnnotationA
     @MyAnnotationB
     public String username = "张三";
-    public int password = 123456;
+    private int password = 123456;
 
     public User() {
     }

@@ -51,7 +51,7 @@ public class ReflectClassesDemo {
         LOGGER.info("通过class.getSimpleName()获得类的简名：" + userClass.getSimpleName());
 
         //获取字段 Field
-        LOGGER.info("通过class.getDeclaredField获取指定的字段：" + userClass.getDeclaredField("username"));
+        LOGGER.info("通过class.getDeclaredField(name)获取指定的字段：" + userClass.getDeclaredField("username"));
         Field[] fields = userClass.getDeclaredFields();
         for (Field field : fields) {
             LOGGER.info("通过class.getDeclaredFields()获取全部字段：" + field);
