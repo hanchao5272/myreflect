@@ -50,7 +50,7 @@ public class User extends SuperUser implements InterfaceAAA, InterfaceBBB {
     }
 
     /**
-     * <p>为了测试通过Method获取参数注解的二维矩阵</p>
+     * <p>为了测试通过Method获取参数注解的二维矩阵;测试：java反射-参数Parameter</p>
      *
      * @author hanchao 2018/3/4 14:24
      **/

@@ -22,20 +22,26 @@ public class ReflectParameterDemo {
      * @author 韩超 2018/3/1 15:56
      */
     public static void main(String[] args) throws NoSuchMethodException {
+        //===================================== 通过Class对象获取Parameter对象 =====================================
+        LOGGER.info("===================================== 通过Class对象获取Parameter对象 =====================================");
         //首先获取Class对象
         Class userClass = User.class;
+        LOGGER.info("首先获取Class对象：" + userClass);
         //然后获取Method（或者Constructor）对象
         Method method = userClass.getDeclaredMethod("initUser", String.class, String.class);
+        LOGGER.info("然后获取Method或者Constructor对象：" + method);
         //然后获取Parameter对象数组
         Parameter[] parameters = method.getParameters();
+        LOGGER.info("然后通过getParameters()获取Parameter对象数组");
         //然后获取Parameter对象
         Parameter parameter = parameters[0];
+        LOGGER.info("最终获得参数Parameter对象" + parameter + "\n");
 
         //===================================== Parameter信息获取 =====================================
         LOGGER.info("===================================== Parameter信息获取 =====================================");
         LOGGER.info("通过parameter.getModifiers()获取参数修饰符:" + Modifier.toString(parameter.getModifiers()));
         LOGGER.info("通过parameter.getName()获取参数名：" + parameter.getName());
-        LOGGER.info("通过parameter.getParameterizedType()获取参数化类型：" + parameter.getParameterizedType());
+        LOGGER.info("通过parameter.getParameterizedType()获取参数化类型(泛型)：" + parameter.getParameterizedType());
         LOGGER.info("通过parameter.toString()获取参数的字符串描述：" + parameter.toString());
         LOGGER.info("通过parameter.isSynthetic()判断参数是否是合成的：" + parameter.isSynthetic());
         LOGGER.info("通过parameter.isImplicit()判断参数是否是隐式的：" + parameter.isImplicit());
